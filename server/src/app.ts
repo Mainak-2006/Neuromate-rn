@@ -20,7 +20,13 @@ export const createApp = () => {
   });
 
   app.get('/', (_req, res) => {
-    res.json({ message: 'Welcome to the NeuroMate API' });
+    res.send(`
+      <html lang="en" className="scroll-smooth">
+      <head></head>
+      <body>
+        <h1>Welcome to the NeuroMate API</h1>
+      </body>
+      </html>`);
   });
 
   app.use('/api', requireAuth, apiRouter);
@@ -28,7 +34,7 @@ export const createApp = () => {
   app.use(notFoundHandler);
   app.use(errorHandler);
 
-  return app;
+  return app;     
 };
 
 export const app = createApp();
